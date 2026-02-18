@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dither Lab</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="panel controls">
+        <h1>Dither Lab</h1>
+        <p class="subtitle">Turn any image into stylized dither output.</p>
+        <p class="hint">Tip: for image clipboard copy, run this page on <code>localhost</code>.</p>
+
+        <label class="label" for="fileInput">Input Image</label>
+        <input id="fileInput" type="file" accept="image/*" />
+
+        <label class="label" for="modeSelect">Dither Style</label>
+        <select id="modeSelect">
+          <option value="dot" selected>Round Dot (Primary)</option>
+          <option value="floyd">Horizontal Hatch</option>
+          <option value="atkinson">Vertical Hatch</option>
+          <option value="bayer">Cross Hatch</option>
+          <option value="threshold">Grain Stipple</option>
+        </select>
+
+        <div class="grid">
+          <label class="label" for="scaleRange">Pixel Scale</label>
+          <input id="scaleRange" type="range" min="2" max="24" value="8" />
+
+          <label class="label" for="levelsRange">Levels</label>
+          <input id="levelsRange" type="range" min="2" max="8" value="2" />
+
+          <label class="label" for="contrastRange">Contrast</label>
+          <input id="contrastRange" type="range" min="50" max="180" value="110" />
+
+          <label class="label" for="textureRange">Texture Intensity</label>
+          <input id="textureRange" type="range" min="0" max="100" value="55" />
+        </div>
+
+        <label class="label" for="colorModeSelect">Color Treatment</label>
+        <select id="colorModeSelect">
+          <option value="mono" selected>Monochrome</option>
+          <option value="preserve">Preserve Original Tone</option>
+          <option value="theme">Theme Tint</option>
+        </select>
+
+        <label class="label" for="themeColorInput">Theme Color</label>
+        <input id="themeColorInput" type="color" value="#c74634" />
+
+        <button id="renderBtn" type="button">Render</button>
+
+        <div class="actions">
+          <button id="resetBtn" type="button">Reset to Original</button>
+          <button id="copyBtn" type="button">Copy PNG</button>
+          <button id="downloadBtn" type="button">Download PNG</button>
+        </div>
+
+        <p id="status" aria-live="polite"></p>
+      </section>
+
+      <section class="panel preview">
+        <canvas id="canvas"></canvas>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
